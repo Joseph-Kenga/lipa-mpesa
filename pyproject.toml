@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools>=77", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "lipa-mpesa"
+version = "0.1.0"
+description = "A small, typed Python client for Safaricom's M-Pesa Daraja API (STK Push, C2B, B2C, status, balance, reversal)."
+readme = "README.md"
+requires-python = ">=3.9"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{ name = "J. Kenga", email = "jkenga331@gmail.com" }]
+keywords = ["mpesa", "daraja", "safaricom", "stk push", "kenya", "payments"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+    "Framework :: Django",
+]
+dependencies = ["requests>=2.28"]
+
+[project.urls]
+Homepage = "https://github.com/Joseph-Kenga/lipa-mpesa"
+Issues = "https://github.com/Joseph-Kenga/lipa-mpesa/issues"
+
+[project.optional-dependencies]
+# Needed only for B2C, transaction status, balance and reversal,
+# which require an RSA-encrypted "security credential".
+crypto = ["cryptography>=41"]
+dev = ["pytest>=7", "cryptography>=41"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
